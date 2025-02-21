@@ -57,3 +57,12 @@ export const headers = [
   { key: "stock", title: "在庫", nowrap: true },
   { key: "actions", title: "詳細", nowrap: true, sortable: false },
 ];
+
+export const default_headers = [
+  "name",
+  "image",
+  "price",
+  "rating",
+  "stock",
+  "actions",
+];
