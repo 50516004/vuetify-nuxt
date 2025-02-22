@@ -85,6 +85,17 @@
 
             <v-btn class="mt-4" color="primary" :disabled="!ready">送信</v-btn>
           </div>
+          <v-row justify="start" class="mt-4">
+            <v-col cols="12">
+              <v-chip>name: {{ name }}</v-chip>
+            </v-col>
+            <v-col cols="12">
+              <v-chip>select: {{ select }}</v-chip>
+            </v-col>
+            <v-col cols="12">
+              <v-chip>checkbox: {{ checkbox }}</v-chip>
+            </v-col>
+          </v-row>
         </v-form>
       </v-card-text>
     </v-card>
