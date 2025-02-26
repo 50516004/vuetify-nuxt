@@ -2,6 +2,7 @@
   useHead({ title: "データテーブル" });
 
   const headers = [
+    {},
     { title: "No", key: "id", sortable: false },
     { title: "日時", key: "date" },
     { title: "タイトル", key: "title" },
@@ -44,8 +45,10 @@
 
   function handleClick(e: any, row: Row) {
     const msg = messages.value[row.index];
-    if (msg) msg.isRead = true;
+    if (msg) msg.isRead = !msg.isRead;
   }
+
+  const selected = ref([]);
 </script>
 
 <template>
@@ -63,8 +66,11 @@
       <v-data-table
         :headers="headers"
         :items="messages"
-        item-value="name"
         @click:row="handleClick"
+        item-value="id"
+        item-selectable="selectable"
+        show-select
+        v-model="selected"
         hover
       >
         <template #item.title="{ item }">
