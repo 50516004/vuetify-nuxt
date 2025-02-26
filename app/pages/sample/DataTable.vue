@@ -6,6 +6,10 @@
   function openDetail(item: Item) {
     alert(`${item.name}は\$${item.price}です。`);
   }
+
+  function handleClick(e: any, item: any) {
+    alert(JSON.stringify(item));
+  }
 </script>
 
 <template>
@@ -22,7 +26,7 @@
           </v-col>
         </v-row>
       </v-card-title>
-      <v-data-table :items="items" :headers="headers" hover>
+      <v-data-table :items="items" :headers="headers" @click:row="handleClick">
         <template v-slot:item.image="{ item }">
           <v-card class="my-2" elevation="2" rounded>
             <v-img
@@ -40,6 +44,7 @@
             density="compact"
             size="small"
             readonly
+            @click=""
           ></v-rating>
         </template>
 

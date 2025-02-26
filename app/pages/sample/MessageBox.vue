@@ -38,9 +38,13 @@
     messages.value.forEach((message) => (message.isRead = false));
   }
 
-  function handleClick(id: number) {
-    const message = messages.value.find((msg) => msg.id == id);
-    if (message) message.isRead = true;
+  type Row = {
+    index: number;
+  };
+
+  function handleClick(e: any, row: Row) {
+    const msg = messages.value[row.index];
+    if (msg) msg.isRead = true;
   }
 </script>
 
@@ -60,17 +64,14 @@
         :headers="headers"
         :items="messages"
         item-value="name"
+        @click:row="handleClick"
         hover
       >
-        <template #item="{ item }">
-          <tr @click="handleClick(item.id)" class="cursor-pointer">
-            <td>{{ item.id }}</td>
-            <td>{{ item.date }}</td>
-            <td :class="!item.isRead && 'font-weight-bold'">
-              {{ item.title }}
-              <v-badge v-if="!item.isRead" color="success" dot inline></v-badge>
-            </td>
-          </tr>
+        <template #item.title="{ item }">
+          <td :class="!item.isRead && 'font-weight-bold'">
+            {{ item.title }}
+            <v-badge v-if="!item.isRead" color="success" dot inline></v-badge>
+          </td>
         </template>
       </v-data-table>
     </v-card>
