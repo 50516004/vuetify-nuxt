@@ -17,6 +17,11 @@
           to: "/sample/datatable",
         },
         {
+          title: "メッセージボックス",
+          icon: "mdi-card-text-outline",
+          to: "/sample/messagebox",
+        },
+        {
           title: "フォーム",
           icon: "mdi-card-text-outline",
           to: "/sample/formsample",
